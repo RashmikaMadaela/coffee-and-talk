@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Palatino', serif;
+    background: linear-gradient(135deg, #6d4c3d 0%, #3e2723 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Coffee bean background pattern */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(139, 90, 60, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 90, 60, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(139, 90, 60, 0.25) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(139, 90, 60, 0.1);
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #3e2723;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(139, 90, 60, 0.2);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h4 {
+    color: #6d4c3d;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.coffee-cup {
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.advice-bubble {
+    background: linear-gradient(135deg, #8b5a3c 0%, #6d4c3d 100%);
+    color: #fff8f0;
+    padding: 20px 25px;
+    border-radius: 20px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    animation: bubbleFloat 3s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.advice-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #6d4c3d;
+}
+
+.advice-bubble p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.advice-bubble:empty {
+    min-height: 80px;
+}
+
+.advice-bubble:empty::before {
+    content: 'Click the button for some advice!';
+    color: rgba(255, 248, 240, 0.8);
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+lord-icon {
+    transition: transform 0.3s ease;
+}
+
+#new-advice-btn {
+    background: linear-gradient(135deg, #8b5a3c 0%, #6d4c3d 100%);
+    color: #fff8f0;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-family: 'Georgia', serif;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#new-advice-btn:hover {
+    background: linear-gradient(135deg, #a0694f 0%, #8b5a3c 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+#new-advice-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        letter-spacing: 1px;
+    }
+
+    h4 {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+
+    .advice-bubble {
+        padding: 18px 20px;
+        min-height: 90px;
+        max-width: 100%;
+    }
+
+    .advice-bubble p {
+        font-size: 1em;
+    }
+
+    lord-icon {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    #new-advice-btn {
+        padding: 12px 35px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+    }
+
+    h4 {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+
+    .advice-bubble {
+        padding: 15px 18px;
+        min-height: 80px;
+        border-radius: 15px;
+    }
+
+    .advice-bubble p {
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+
+    lord-icon {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    #new-advice-btn {
+        padding: 12px 30px;
+        font-size: 1em;
+        margin-top: 15px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 0.85em;
+    }
+
+    lord-icon {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    #new-advice-btn {
+        padding: 10px 25px;
+        font-size: 0.95em;
+    }
+}
